@@ -1,5 +1,14 @@
 {
   "projects": {
-    "default": "contacts-55e11"
+    "default": "ccr-status-comercio"
+  },
+  "targets": {
+    "ccr-status-comercio": {
+      "hosting": {
+        "angular-17-firebase-crud": [
+          "ccr-status-comercio"
+        ]
+      }
+    }
   }
 }
