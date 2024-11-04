@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 import { BannerComponent } from '../../../shared/banner/banner.component';
 import { Comercio } from '../../shared/interfaces/comercio.interface';
 
-@Component({
+@Component({ 
   selector: 'app-contact-dashboard',
   template: `
     <app-banner/>
@@ -22,6 +22,7 @@ import { Comercio } from '../../shared/interfaces/comercio.interface';
             [contact]="contact"
             (deleteContact)="deleteContact($event)"
             (editContact)="editContact($event)"
+            (timelineContact)="timelineContact($event)"
           />
         }
       </section>
@@ -45,6 +46,10 @@ export default class ContactDashboardComponent {
 
   editContact(contact: Comercio) {
     this._router.navigate(['/dashboard/edit', contact.id]);
+  }
+
+  timelineContact(contact: Comercio) {
+    this._router.navigate(['/timeline', contact.id]);
   }
 
   async changeQuery(query: string) {

@@ -14,7 +14,6 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-import { Contact, ContactForm } from '../shared/interfaces/contacts.interface';
 import { Comercio, ComercioForm } from '../shared/interfaces/comercio.interface';
 
 const PATH = 'contacts';

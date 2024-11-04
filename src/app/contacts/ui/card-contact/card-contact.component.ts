@@ -8,7 +8,7 @@ import { CapitalizePipe } from '../../../pipe/capitalize.pipe';
   selector: 'app-card-contact',
   template: `
     <div class="border border-gray-500/50 rounded-md p-4 flex flex-row gap-x-4">
-      <div class="flex-1">
+      <div class="flex-1 cursor-pointer" (click)="onTimeline(contact)">
         <h4 class="text-white mb-2 font-bold">{{ contact.fullName | capitalize }}</h4>
         <small class="text-yellow-500 mb-2">{{ contact.agenda }}</small>
         <p class="text-gray-300 mb-2">{{ contact.ambiente | capitalize }}</p>
@@ -33,11 +33,17 @@ export class CardContactComponent {
   @Input({ required: true }) contact!: Comercio;
 
   @Output() editContact = new EventEmitter<Comercio>();
+  @Output() timelineContact = new EventEmitter<Comercio>();
 
   @Output() deleteContact = new EventEmitter<string>();
 
   onEditContact(contact: Comercio) {
     this.editContact.emit(contact);
+  }
+
+  onTimeline(contact: Comercio) {
+    
+    this.timelineContact.emit(contact);
   }
 
   onDeleteContact(contact: Comercio) {
