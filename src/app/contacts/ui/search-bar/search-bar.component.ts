@@ -18,7 +18,7 @@ import { RouterLink } from '@angular/router';
     <div class="flex items-center gap-x-4">
       <input
         type="text"
-        placeholder="Search contacts"
+        placeholder="Buscar..."
         class="w-full p-3 rounded-md text-sm bg-transparent border-gray-500 border"
         [formControl]="control"
       />
@@ -27,7 +27,7 @@ import { RouterLink } from '@angular/router';
         routerLink="/dashboard/create"
       >
         <app-icon-plus class="size-4" />
-        Create new contact
+        Crear
       </a>
     </div>
   `,

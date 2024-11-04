@@ -8,6 +8,7 @@ import { Contact } from '../../shared/interfaces/contacts.interface';
 import { SearchBarComponent } from '../../ui/search-bar/search-bar.component';
 import { of } from 'rxjs';
 import { BannerComponent } from '../../../shared/banner/banner.component';
+import { Comercio } from '../../shared/interfaces/comercio.interface';
 
 @Component({
   selector: 'app-contact-dashboard',
@@ -42,13 +43,13 @@ export default class ContactDashboardComponent {
     } catch (error) {}
   }
 
-  editContact(contact: Contact) {
+  editContact(contact: Comercio) {
     this._router.navigate(['/dashboard/edit', contact.id]);
   }
 
   async changeQuery(query: string) {
     try {
-      const contacts = await this._contactsService.searchContactByQuery(query);
+      const contacts = await this._contactsService.searchContactByQuery(query.toLowerCase());
       this.contacts$ = of(contacts);
     } catch (error) {}
   }

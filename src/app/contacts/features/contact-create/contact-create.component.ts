@@ -11,11 +11,12 @@ import { IconRocket } from '../../../shared/ui/icons/rocket';
 import { IconBack } from '../../../shared/ui/icons/back';
 import { ContactsService } from '../../data-access/contacts.service';
 import { ContactForm } from '../../shared/interfaces/contacts.interface';
+import { ComercioForm } from '../../shared/interfaces/comercio.interface';
 
 export interface CreateForm {
   fullName: FormControl<string>;
-  email: FormControl<string>;
-  phoneNumber: FormControl<string>;
+  ambiente: FormControl<string>;
+  agenda: FormControl<string>;
   description?: FormControl<string | undefined>;
 }
 
@@ -26,38 +27,38 @@ export interface CreateForm {
       <form [formGroup]="form" (ngSubmit)="createContact()">
         <div class="mb-8">
           <label for="first_name" class="block mb-2 text-sm font-medium"
-            >First name</label
+            >Nombre del comercio</label
           >
           <input
             type="text"
             id="first_name"
             class="w-full p-3 rounded-md text-sm bg-transparent border-gray-500 border"
-            placeholder="John Doe"
+            placeholder="Empresa"
             formControlName="fullName"
           />
         </div>
         <div class="mb-8">
-          <label for="email" class="block mb-2 text-sm font-medium"
-            >Email</label
+          <label for="ambiente" class="block mb-2 text-sm font-medium"
+            >Ambiente</label
           >
           <input
             type="text"
-            id="email"
+            id="ambiente"
             class="w-full p-3 rounded-md text-sm bg-transparent border-gray-500 border"
-            placeholder="example@mail.com"
-            formControlName="email"
+            placeholder="Desarrollo/Calidad/Producción"
+            formControlName="ambiente"
           />
         </div>
         <div class="mb-8">
-          <label for="phoneNumber" class="block mb-2 text-sm font-medium"
-            >Phone number</label
+          <label for="agenda" class="block mb-2 text-sm font-medium"
+            >Agenda</label
           >
           <input
             type="text"
-            id="phoneNumber"
+            id="agenda"
             class="w-full p-3 rounded-md text-sm bg-transparent border-gray-500 border"
-            placeholder="+51 995123233"
-            formControlName="phoneNumber"
+            placeholder="Fecha"
+            formControlName="agenda"
           />
         </div>
         <div class="mb-8">
@@ -121,11 +122,8 @@ export default class ContactCreateComponent {
 
   form = this._formBuilder.group<CreateForm>({
     fullName: this._formBuilder.control('', Validators.required),
-    email: this._formBuilder.control('', [
-      Validators.required,
-      Validators.email,
-    ]),
-    phoneNumber: this._formBuilder.control('', Validators.required),
+    ambiente: this._formBuilder.control('', Validators.required),
+    agenda: this._formBuilder.control('', Validators.required),
     description: this._formBuilder.control(''),
   });
 
@@ -133,7 +131,7 @@ export default class ContactCreateComponent {
     if (this.form.invalid) return;
 
     try {
-      const contact = this.form.value as ContactForm;
+      const contact = this.form.value as ComercioForm;
       !this.contactId
         ? await this._contactsService.createContact(contact)
         : await this._contactsService.updateContact(this.contactId, contact);
@@ -149,8 +147,8 @@ export default class ContactCreateComponent {
       if (!contact) return;
       this.form.setValue({
         fullName: contact.fullName,
-        email: contact.email,
-        phoneNumber: contact.phoneNumber,
+        ambiente: contact.ambiente,
+        agenda: contact.agenda,
         description: contact.description,
       });
     } catch (error) {}
