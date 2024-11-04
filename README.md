@@ -1,27 +1,15 @@
 # Angular17FirebaseCrud
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+Se realiza este proyecto con firebase para evitar realizar un backend
 
-## Development server
+## Iniciar
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+luego de clonar realizar npm i
 
-## Code scaffolding
+## Cambiar credenciales
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Se debe tener una cuenta en firebase y una coleccion llmada contacts
+- Hacer login de firebase yo lo realice con ng add @angular/fire, seleccionar firestore y meter la key generada.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- y actualizar con sus credenciales el archivo enviroment y enviroment develop

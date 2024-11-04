@@ -2,10 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap');
+
 :root {
   color-scheme: light dark;
 }
 
 body {
   @apply bg-black;
+}
+
+.oranienbaum-regular {
+  font-family: "Oranienbaum", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.color-title{
+  color: #b28c00
 }

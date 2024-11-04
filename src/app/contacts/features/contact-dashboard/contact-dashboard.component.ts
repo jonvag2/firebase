@@ -7,13 +7,15 @@ import { ContactsService } from '../../data-access/contacts.service';
 import { Contact } from '../../shared/interfaces/contacts.interface';
 import { SearchBarComponent } from '../../ui/search-bar/search-bar.component';
 import { of } from 'rxjs';
+import { BannerComponent } from '../../../shared/banner/banner.component';
 
 @Component({
   selector: 'app-contact-dashboard',
   template: `
-    <div class="px-4 xl:px-0 w-full max-w-[1200px] m-auto">
+    <app-banner/>
+    <div class="px-4 xl:px-0 w-full max-w-[1200px] mx-auto my-10">
       <app-search-bar (changeQuery)="changeQuery($event)" />
-      <section class="grid grid-cols-3 gap-8 mt-8">
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mt-8">
         @for (contact of contacts$ | async; track contact.id) {
           <app-card-contact
             [contact]="contact"
@@ -25,7 +27,7 @@ import { of } from 'rxjs';
     </div>
   `,
   standalone: true,
-  imports: [CardContactComponent, SearchBarComponent, AsyncPipe],
+  imports: [CardContactComponent, SearchBarComponent, AsyncPipe, BannerComponent],
 })
 export default class ContactDashboardComponent {
   private _contactsService = inject(ContactsService);
