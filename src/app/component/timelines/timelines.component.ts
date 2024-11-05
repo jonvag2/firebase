@@ -1,14 +1,16 @@
 import { Component, Input, inject } from '@angular/core';
 import { TimelineService } from '../../contacts/data-access/timeline.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ContactsService } from '../../contacts/data-access/contacts.service';
 import { CapitalizePipe } from '../../pipe/capitalize.pipe';
 import { IconCalendar } from '../../shared/ui/icons/calendar';
+import { IconPlus } from "../../shared/ui/icons/plus";
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-timelines',
   standalone: true,
-  imports: [CapitalizePipe, IconCalendar],
+  imports: [CapitalizePipe, IconCalendar, IconPlus, RouterLink, AsyncPipe],
   templateUrl: './timelines.component.html',
   styleUrl: './timelines.component.scss'
 })
@@ -22,32 +24,41 @@ export class TimelinesComponent {
 
   timelines$ = this._timelineService.getTimelines();
   comercioInfo$:any= '';
+  timelinesComercio$:any= '';
+
   
   ngOnInit(): void {
-   /*  this.timelines$.subscribe((data) => {
-      console.log('data', data);
-    }); */
+   
+    this.getTimelinesComercio(this._comercioId);
   }
 
   @Input() set comercioId(value: string) {
     this._comercioId = value;
-    console.log('data del pueblo', this._comercioId);
-
-
     this.getComercio(this._comercioId);
   }
 
   async getComercio(id: string) {
     try {
-      console.log('voy a buscar esto', id);
-
       const comercio = await this._contactsService.getContact(id);
 
-      console.log('comercio', comercio);
       if (!comercio) return;
       
       this.comercioInfo$ = comercio;
     } catch (error) {}
+  }
+
+  getTimelinesComercio(id: string) {
+    try {
+       this._timelineService.getTimelinesComercio(id).subscribe((data) => {
+        console.log(data);
+        this.timelinesComercio$ = data
+      });
+
+    } catch (error) {}
+  }
+
+  createTimeline() {
+    this._router.navigate(['/timeline/create', this._comercioId]);
   }
 
 }

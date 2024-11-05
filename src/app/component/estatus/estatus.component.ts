@@ -39,9 +39,7 @@ export class EstatusComponent implements OnInit{
           this.produccion.push(item)
         }
       })
-      console.log(this.calidad);
-      console.log(this.desarrollo);
-      console.log(this.produccion);
+      
     });
 
   }

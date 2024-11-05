@@ -67,7 +67,6 @@ export class ContactsService {
 /*     const hours = this.currentDate.getHours();
     const minutes = this.currentDate.getMinutes();  */
 
-    console.log('contact que llega ..',contact);
     let contactFormateado = {
       fullName: contact.fullName.toLowerCase(),
       ambiente: contact.ambiente.toLowerCase(),
