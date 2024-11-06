@@ -72,7 +72,7 @@ export class ContactsService {
       ambiente: contact.ambiente.toLowerCase(),
       agenda: contact.agenda,
       description: contact.description,
-      cretedAt:`${year}${month}${day}`,
+      createdAt:`${year}${month}${day}`,
       updatedAt:`${year}${month}${day}`
     };
     return addDoc(this._collection, contactFormateado);

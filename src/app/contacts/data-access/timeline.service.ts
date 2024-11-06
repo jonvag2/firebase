@@ -51,7 +51,7 @@ export class TimelineService {
       fecha: `${day}/${month}/${year}`,
       id_comercio: timeline.id_comercio,
       description: timeline.description,
-      cretedAt:`${year}${month}${day}${hours}${minutes}`
+      createdAt:`${year}${month}${day}${hours}${minutes}`
     };
     
     return addDoc(this._collection, TimelineFormateado);
