@@ -17,10 +17,10 @@ import { IconContact } from '../icons/contact';
           <app-icon-contact />
           <p>Status</p>
         </a>
-        <a routerLink="/timeline" class="flex gap-x-4">
+        <!-- <a routerLink="/timeline" class="flex gap-x-4">
           <app-icon-contact />
           <p>Timeline</p>
-        </a>
+        </a> -->
       </div>
     </nav>
   `,
