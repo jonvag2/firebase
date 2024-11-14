@@ -12,9 +12,9 @@
                 <h4 class="oranienbaum-regular color-title text-2xl ">Desarrollo</h4>
             </div>
             <div class="pl-10">
-                <ul class="list-disc color-title pb-3">
+                <ul class="list-disc color-title pb-2">
                     @for (item of this.desarrollo; track item.id) {
-                        <li ><h5 class="text-white text-lg">{{item.fullName | capitalize}}</h5></li>
+                        <li class="item-link transRight"><h5 class="text-white text-lg" (click)="timelineContact(item)" style="cursor: pointer;">{{item.fullName | capitalize}}</h5></li>
                       }
                 </ul>
             </div>
@@ -26,7 +26,7 @@
             <div class="pl-10">
                 <ul class="list-disc color-title pb-3">
                     @for (item of this.calidad; track item.id) {
-                        <li ><h5 class="text-white text-lg">{{item.fullName | capitalize}}</h5></li>
+                        <li class="item-link transRight"><h5 class="text-white text-lg" (click)="timelineContact(item)" style="cursor: pointer;">{{item.fullName | capitalize}}</h5></li>
                       }
                 </ul>
             </div>
@@ -38,7 +38,7 @@
             <div class="pl-10">
                 <ul class="list-disc color-title pb-3">
                     @for (item of this.produccion; track item.id) {
-                        <li ><h5 class="text-white text-lg">{{item.fullName | capitalize}}</h5></li>
+                        <li class="item-link transRight"><h5 class="text-white text-lg" (click)="timelineContact(item)" style="cursor: pointer;">{{item.fullName | capitalize}}</h5></li>
                       }
                 </ul>
             </div>
@@ -48,7 +48,7 @@
         <section class="grid grid-cols-1 md:grid-cols-3 gap-9">
             <div class="flex items-center justify-center">
                 <div class="w-full">
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg animate-pulse">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg animate-pulse m-auto">
                     <div class="h-48 border rounded-3xl bg-gray-900">
                         <div class="px-6 py-4">
                             <div class="h-6 bgtitle mb-2 w-1/3 m-auto"></div>
@@ -64,7 +64,7 @@
             </div>
             <div class="flex items-center justify-center">
                 <div class="w-full">
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg animate-pulse">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg animate-pulse m-auto">
                     <div class="h-48 border rounded-3xl bg-gray-900">
                         <div class="px-6 py-4">
                             <div class="h-6 bgtitle mb-2 w-1/3 m-auto"></div>
@@ -80,7 +80,7 @@
             </div>
             <div class="flex items-center justify-center">
                 <div class="w-full">
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg animate-pulse">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg animate-pulse m-auto">
                     <div class="h-48 border rounded-3xl bg-gray-900">
                         <div class="px-6 py-4">
                             <div class="h-6 bgtitle mb-2 w-1/3 m-auto"></div>

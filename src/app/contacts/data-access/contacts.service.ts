@@ -45,6 +45,7 @@ export class ContactsService {
   }
 
   async searchContactByQuery(name: string) {
+    console.log("Buscado con query...", name)
     const q = query(
       this._collection,
       where('fullName', '>=', name),

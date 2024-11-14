@@ -1,7 +1,21 @@
 <div class="px-4 xl:px-0 w-full max-w-[1200px] mx-auto my-10">
-    <section class="m-auto flex justify-center items-center">
-        <h3 class="oranienbaum-regular color-title text-3xl md:text-6xl">{{this.comercioInfo$.fullName | capitalize }}</h3>
-    </section>
+    @if(comercioInfo$){
+        <section class="m-auto flex justify-center items-center h-20">
+            <h3 class="oranienbaum-regular color-title text-3xl md:text-6xl">{{this.comercioInfo$.fullName | capitalize }}</h3>
+        </section>
+    }@else{
+        <section class="m-auto flex justify-center items-center">
+            <div class="w-full">
+                <div class="max-w-sm overflow-hidden shadow-lg animate-pulse m-auto">
+                <div class="h-20">
+                    <div class="px-6 py-4">
+                        <div class="h-16 bgtitle mb-2 w-2/3 m-auto"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+    }
 </div>
 
 <div class="px-4 xl:px-0 w-full max-w-[1200px] mx-auto">

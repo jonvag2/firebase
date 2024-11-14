@@ -1,0 +1,20 @@
+.item-link{
+    margin-bottom: 6px;
+    padding-left: 12px;
+}
+.item-link:hover{
+    background-color: rgba(255, 255, 255, 0.096);
+    border-radius: 5px;
+    margin-bottom: 6px;
+}
+
+.transRight{
+    transition: .2s, color .10s;
+        -webkit-transition: .2s, color .10s;
+        -moz-transition: .2s, color .10s;
+}
+.transRight:hover{
+    transform: translatex(10px);
+        -webkit-transform: translatex(10px);
+        -moz-transform: translatex(10px);
+}

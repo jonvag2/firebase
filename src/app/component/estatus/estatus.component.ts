@@ -3,6 +3,7 @@ import { ContactsService } from '../../contacts/data-access/contacts.service';
 import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { CapitalizePipe } from '../../pipe/capitalize.pipe';
+import { Comercio } from '../../contacts/shared/interfaces/comercio.interface';
 
 @Component({
   selector: 'app-estatus',
@@ -42,6 +43,10 @@ export class EstatusComponent implements OnInit{
       
     });
 
+  }
+
+  timelineContact(contact: Comercio) {
+    this._router.navigate(['/timeline', contact.id]);
   }
 
 }

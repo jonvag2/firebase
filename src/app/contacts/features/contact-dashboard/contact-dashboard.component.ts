@@ -17,7 +17,7 @@ import { Comercio } from '../../shared/interfaces/comercio.interface';
     <div class="px-4 xl:px-0 w-full max-w-[1200px] mx-auto my-10">
       <app-search-bar (changeQuery)="changeQuery($event)" />
       <section class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mt-8">
-        @for (contact of contacts$ | async; track contact.id) {
+        @for (contact of contacts$ ; track contact.id) {
           <app-card-contact
             [contact]="contact"
             (deleteContact)="deleteContact($event)"
@@ -36,7 +36,15 @@ export default class ContactDashboardComponent {
 
   private _router = inject(Router);
 
-  contacts$ = this._contactsService.getContacts();
+  contacts$:any =""; 
+
+  ngOnInit(): void {
+
+    this._contactsService.getContacts().subscribe((data) => {
+      this.contacts$= data;
+    });
+  }
+  
 
   async deleteContact(id: string) {
     try {
@@ -53,9 +61,26 @@ export default class ContactDashboardComponent {
   }
 
   async changeQuery(query: string) {
-    try {
-      const contacts = await this._contactsService.searchContactByQuery(query.toLowerCase());
-      this.contacts$ = of(contacts);
+   // Filtrar resultados
+
+    
+   try {
+      await this.buscarNombreContiene(query)
+
     } catch (error) {}
+  }
+
+  async buscarNombreContiene(name:string) {
+    // Filtrar resultados
+    let results:any = [];
+    this._contactsService.getContacts().subscribe((res) => {
+     results = res.filter((res) => {
+        return res.fullName.toLowerCase().includes(name.toLowerCase());
+      })
+      this.contacts$= results
+
+    })
+    this.contacts$= results
+    return results; // Devuelve los documentos que contienen el nombre buscado
   }
 }
