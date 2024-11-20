@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { EstatusComponent } from './component/estatus/estatus.component';
-import ContactCreateComponent from './contacts/features/contact-create/contact-create.component';
 import { TimelinesComponent } from './component/timelines/timelines.component';
 import TimelineCreateComponent from './contacts/features/timeline-create/timeline-create.component';
 

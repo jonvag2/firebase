@@ -1,14 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ContactsService } from '../../contacts/data-access/contacts.service';
 import { Router } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
 import { CapitalizePipe } from '../../pipe/capitalize.pipe';
 import { Comercio } from '../../contacts/shared/interfaces/comercio.interface';
 
 @Component({
   selector: 'app-estatus',
   standalone: true,
-  imports: [AsyncPipe, CapitalizePipe],
+  imports: [CapitalizePipe],
   templateUrl: './estatus.component.html',
   styleUrl: './estatus.component.scss'
 })

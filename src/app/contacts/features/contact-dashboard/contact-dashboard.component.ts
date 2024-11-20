@@ -29,7 +29,7 @@ import { Comercio } from '../../shared/interfaces/comercio.interface';
     </div>
   `,
   standalone: true,
-  imports: [CardContactComponent, SearchBarComponent, AsyncPipe, BannerComponent],
+  imports: [CardContactComponent, SearchBarComponent, BannerComponent],
 })
 export default class ContactDashboardComponent {
   private _contactsService = inject(ContactsService);

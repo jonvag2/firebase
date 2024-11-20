@@ -1,16 +1,16 @@
 import { Component, Input, inject } from '@angular/core';
 import { TimelineService } from '../../contacts/data-access/timeline.service';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { ContactsService } from '../../contacts/data-access/contacts.service';
 import { CapitalizePipe } from '../../pipe/capitalize.pipe';
 import { IconCalendar } from '../../shared/ui/icons/calendar';
 import { IconPlus } from "../../shared/ui/icons/plus";
-import { AsyncPipe } from '@angular/common';
+import { CertificationComponent } from "../certification/certification.component";
 
 @Component({
   selector: 'app-timelines',
   standalone: true,
-  imports: [CapitalizePipe, IconCalendar, IconPlus, RouterLink, AsyncPipe],
+  imports: [CapitalizePipe, IconCalendar, IconPlus, CertificationComponent],
   templateUrl: './timelines.component.html',
   styleUrl: './timelines.component.scss'
 })
@@ -20,7 +20,7 @@ export class TimelinesComponent {
 
 
   private _router = inject(Router);
-  private _comercioId= '';
+  _comercioId= '';
 
   timelines$ = this._timelineService.getTimelines();
   comercioInfo$:any= '';
