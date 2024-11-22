@@ -31,7 +31,7 @@ export class CertificationService {
   constructor() { }
 
   getCertification(id:string) {
-    const q = query(this._collection, where('id_comercio', '==', 'jeje'));
+    const q = query(this._collection, where('id_comercio', '==', id));
     return collectionData(q, { idField: 'id' }) as Observable<
       any
     >;

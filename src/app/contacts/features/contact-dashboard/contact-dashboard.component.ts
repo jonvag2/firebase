@@ -17,14 +17,14 @@ import { Comercio } from '../../shared/interfaces/comercio.interface';
     <div class="px-4 xl:px-0 w-full max-w-[1200px] mx-auto my-10">
       <app-search-bar (changeQuery)="changeQuery($event)" />
       <section class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mt-8">
-        @for (contact of contacts$ ; track contact.id) {
+          @for (contact of contacts$ ; track contact.id) {
           <app-card-contact
             [contact]="contact"
             (deleteContact)="deleteContact($event)"
             (editContact)="editContact($event)"
             (timelineContact)="timelineContact($event)"
           />
-        }
+      }
       </section>
     </div>
   `,

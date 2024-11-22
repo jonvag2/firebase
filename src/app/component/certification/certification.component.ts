@@ -1,19 +1,43 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { CertificationService } from '../../contacts/data-access/certification.service';
-
+import { AsyncPipe } from '@angular/common';
+import { IconDelete } from '../../shared/ui/icons/delete';
+import { IconEdit } from '../../shared/ui/icons/edit';
+import { FormCertificationComponent } from "../../contacts/ui/form-certification/form-certification.component";
+import {
+  FormBuilder,
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 @Component({
   selector: 'app-certification',
   standalone: true,
-  imports: [],
+  imports: [IconEdit, FormCertificationComponent, IconDelete, ReactiveFormsModule],
   templateUrl: './certification.component.html',
   styleUrl: './certification.component.scss'
 })
 export class CertificationComponent implements OnInit{
   @Input({ required: true }) id_comercio!: string;
 
+  isOpen = false;
+
   private _certificationService = inject(CertificationService);
   private _router: any;
 
+  dataCert:any;
+  selectedOption: string = '';
+  options = ['Opción 1', 'Opción 2', 'Opción 3'];
+form: any;
+
+  toggleDropdown() {
+    this.isOpen = !this.isOpen;
+  }
+
+  selectOption(option: string) {
+    this.selectedOption = option;
+    this.isOpen = false; // Cierra el dropdown después de seleccionar
+  }
 
   ngOnInit(): void {
     
@@ -24,11 +48,12 @@ export class CertificationComponent implements OnInit{
     
 
   }
-
   getCertificationComercio(id: string) {
     try {
        this._certificationService.getCertification(id).subscribe((data) => {
-        console.log("data de certification: ", data);
+        this.dataCert = data;
+
+        console.log("dataCert: ",this.dataCert);
       });
 
     } catch (error) {}
@@ -65,6 +90,15 @@ export class CertificationComponent implements OnInit{
     } catch (error) {
       console.log("Di error: ", error)
     }
+  }
+
+
+  openMenu() {
+    this.isOpen = !this.isOpen;
+  }
+
+  onSubmit(): void {
+    console.log('Opción seleccionada:', this.selectedOption);
   }
 
 }
