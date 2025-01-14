@@ -75,9 +75,16 @@ export default class ContactDashboardComponent {
     let results:any = [];
     this._contactsService.getContacts().subscribe((res) => {
      results = res.filter((res) => {
-        return res.fullName.toLowerCase().includes(name.toLowerCase());
+        if (name && name.length > 0) {
+          return res.fullName.toLowerCase().includes(name.toLowerCase());
+          
+        } else {
+          
+          return res.fullName.toLowerCase().includes('');
+        }
+      
       })
-      this.contacts$= results
+      this.contacts$= results;
 
     })
     this.contacts$= results

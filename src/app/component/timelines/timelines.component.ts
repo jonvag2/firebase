@@ -50,12 +50,8 @@ export class TimelinesComponent {
   getTimelinesComercio(id: string) {
     try {
        this._timelineService.getTimelinesComercio(id).subscribe((data) => {
-        console.log("antes: ",data);
-
         // Ordenar en orden descendente
           data.sort((a:any, b:any) => b.createdAt - a.createdAt);
-        console.log("despues: ",data);
-
         this.timelinesComercio$ = data
       });
 

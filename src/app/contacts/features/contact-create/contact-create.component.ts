@@ -48,6 +48,7 @@ export interface CreateForm {
             placeholder="Desarrollo/Calidad/Producción"
             formControlName="ambiente"
           />
+         
         </div>
         <div class="mb-8">
           <label for="agenda" class="block mb-2 text-sm font-medium"
@@ -63,14 +64,14 @@ export interface CreateForm {
         </div>
         <div class="mb-8">
           <label for="description" class="block mb-2 text-sm font-medium"
-            >Description (optional)</label
+            >Descripción (opcional)</label
           >
           <textarea
             rows="5"
             type="text"
             id="description"
             class="w-full p-3 rounded-md text-sm bg-transparent border-gray-500 border"
-            placeholder="Your description goes here"
+            placeholder="Escriba una descripción"
             formControlName="description"
           ></textarea>
         </div>
@@ -81,7 +82,7 @@ export interface CreateForm {
             routerLink="/dashboard"
           >
             <app-icon-back />
-            Back to dashboard
+            Atrás
           </a>
 
           <button
@@ -90,9 +91,9 @@ export interface CreateForm {
           >
             <app-icon-rocket />
             @if (contactId) {
-              Edit your contact
+              Editar comercio
             } @else {
-              Create your contact
+              Crear un comercio
             }
           </button>
         </div>
@@ -110,6 +111,9 @@ export default class ContactCreateComponent {
   private _contactsService = inject(ContactsService);
 
   private _contactId = '';
+
+  lista: string[] = ['Opción 1', 'Opción 2', 'Opción 3'];
+  seleccionado: string | undefined;
 
   get contactId(): string {
     return this._contactId;

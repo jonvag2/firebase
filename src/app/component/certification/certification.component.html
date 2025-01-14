@@ -1,318 +1,526 @@
 
-    <!-- @for (item of dataCert; track item.id_comercio) {
-        <h2> creden_prd creacion: {{item.creden_prd.creacion}}</h2>
-        <h2> creden_prd registro: {{item.creden_prd.registro}}</h2>
-        <h2> look_feel_qa form_required: {{item.look_feel_qa.form_required}}</h2>
-        <h2> look_feel_qa logo: {{item.look_feel_qa.logo}}</h2>
-        <h2> look_feel_qa mask: {{item.look_feel_qa.mask}}</h2>
-        <h2> look_feel_qa pago_exitoso: {{item.look_feel_qa.pago_exitoso}}</h2>
-        <h2> tx_prd internacional_TDC: {{item.tx_prd.internacional_TDC}}</h2>
-        <h2> tx_prd nacional_TDC: {{item.tx_prd.nacional_TDC}}</h2>
-        <h2> tx_prd nacional_TDD: {{item.tx_prd.nacional_TDD}}</h2>
-        <h2> tx_qa internacional_TDC: {{item.tx_qa.internacional_TDC}}</h2>
-        <h2> tx_qa nacional_TDC: {{item.tx_qa.nacional_TDC}}</h2>
-        <h2> tx_qa nacional_TDD: {{item.tx_qa.nacional_TDD}}</h2>
-        
+    <!-- @for (item of dataCert; track item .id_comercio) {
+    id asociado 1    <h2> creden_prd creacion: {{item .creden_prd.creacion}}</h2>
+    id asociado 2    <h2> creden_prd registro: {{item .creden_prd.registro}}</h2>
+    id asociado 3    <h2> look_feel_qa form_required: {{item .look_feel_qa.form_required}}</h2>
+    id asociado 4    <h2> look_feel_qa logo: {{item .look_feel_qa.logo}}</h2>
+    id asociado 5    <h2> look_feel_qa mask: {{item .look_feel_qa.mask}}</h2>
+    id asociado 6    <h2> look_feel_qa pago_exitoso: {{item .look_feel_qa.pago_exitoso}}</h2>
+    id asociado 7    <h2> tx_prd internacional_TDC: {{item .tx_prd.internacional_TDC}}</h2>
+    id asociado 8    <h2> tx_prd nacional_TDC: {{item .tx_prd.nacional_TDC}}</h2>
+    id asociado 9    <h2> tx_prd nacional_TDD: {{item .tx_prd.nacional_TDD}}</h2>
+    id asociado 10   <h2> tx_qa internacional_TDC: {{item .tx_qa.internacional_TDC}}</h2>
+    id asociado 11   <h2> tx_qa nacional_TDC: {{item .tx_qa.nacional_TDC}}</h2>
+    id asociado 12   <h2> tx_qa nacional_TDD: {{item .tx_qa.nacional_TDD}}</h2>
     } -->
-@for (item of dataCert; track item.id_comercio) {
-    <div class="flex items-center justify-center min-h-screen">
-        <div class="w-full p-3">
-            <div class="overflow-auto lg:overflow-visible flex gap-4 bordes-right-bottom">
-                <div class="bg-gray-800 text-gray-500 border-separate space-y-6 text-sm w-1/4 bordes-left flex">
-                    <section class="w-full flex items-center justify-center">
-                        <div><h3 class="text-xl"> Calidad </h3></div>
-                    </section>
-                </div>
-                <section class="w-3/4 flex justify-center flex-wrap">
-                    <table class="table text-gray-400 space-y-6 text-sm w-full bordes-right-bottom" style="width: 100%;">
-                        <colgroup>
-                            <col style="width: 15%;">
-                            <col style="width: 15%;">
-                            <col style="width: 40%;">
-                            <col style="width: 30%;">
-                        </colgroup>
-                        <thead class="bg-gray-800 text-gray-500">
-                            <tr>
-                                <th class="p-3" colspan="2">Actividad</th>
-                                <th class="p-3 text-left">Especificaciones</th>
-                                <th class="p-3 text-left  flex justify-center">Estatus</th>
-                            </tr>
-                        </thead> 
-                        <tbody class="bordes-right-bottom">
-                            <tr class="bg-gray-800">
-                                <td class="p-3" colspan="2" rowspan="3">
-                                    <div class="flex align-items-center">
-                                        <div class="ml-3" >
-                                            <div class="">Pruebas Transaccionales exitosas</div>
-                                            <div class="text-gray-500"></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="p-3 font-bold">
-                                    Tarjeta de débito nacional TDD
-                                </td>
-                                <td class="p-3 flex gap-3 justify-end" >
-                                    <span class="bg-orange-400 text-gray-50 rounded-md px-2 w-3/4 text-center">{{item.tx_qa.nacional_TDD}}</span>
-                                    <app-form-certification></app-form-certification>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-800">
-
-                                <td class="p-3 font-bold">
-                                    Tarjeta de crédito nacional TDC
-                                </td>
-                                <td class="p-3 flex gap-3 justify-end" >
-                                    <span class="bg-gray-400 text-gray-50 rounded-md px-2 w-3/4 text-center">{{item.tx_qa.nacional_TDC}}</span>
-                                    <button class="relative" type="button" (click)="openMenu()">
-                                        <app-icon-edit />
-                                        <div class="custom-select" (click)="toggleDropdown()">
-                                            <div class="selected-option">{{ selectedOption || 'opcion 0' }}</div>
-                                            @if (isOpen) {
-                                                <ul class="options-list">
-                                                    @for (option of options; track option) {
-                                                        <li (click)="selectOption(option)">
-                                                            {{ option }}
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            }
-                                        </div>
-                                    
-                                        <!-- @if (isOpen) { 
-                                          <div
-                                            class="z-10 absolute right-0 top-7 p-1 min-w-24 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden"
-                                          >
-                                            <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                                                <div class="mb-8">
-                                                    <select id="options" formControlName="selectedOption">
-                                                        <option value="" disabled selected>-- Selecciona una opción --</option>
-                                                        @for (option of options; track option) {
-                                                            <option [value]="option">{{ option }}</option>
-                                                        }
-                                                    </select>
-                                                </div>
-                                            
-                                                <ul
-                                                class="text-sm text-gray-200"
-                                                aria-labelledby="dropdownDefaultButton"
-                                                >
-                                                <li class="mb-1">
-                                                    <div class="mb-8">
-                                                        <label for="first_name" class="block mb-2 text-sm font-medium"
-                                                          >Nombre del comercio</label
-                                                        >
-                                                        <input
-                                                          type="text"
-                                                          id="first_name"
-                                                          class="w-full p-3 rounded-md text-sm bg-transparent border-gray-500 border"
-                                                          placeholder="Empresa"
-                                                          formControlName="fullName"
-                                                        />
-                                                    </div>
-                                                    
-                                                </li>
-                                                <li>
-                                                    <button
-                                                    
-                                                    class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900"
-                                                    >
-                                                    <app-icon-delete /> Delete
-                                                    </button>
-                                                </li>
-                                                </ul>
-                                            </form>
+    @if (!this.DataCertExist) {
+      <div class="mt-16 w-1/2 mx-auto p-3 rounded-md text-sm bg-transparent border-gray-500 border hover:bg-slate-900 flex items-center justify-center cursor-pointer" (click)="crearCertification()">
+        <section class=" flex items-center justify-between" >
+          <div>
+            <span class="">Crear estatus Certificación</span>
+          </div>
+          <button class="relative text-gray-50 hover:text-gray-700 ml-4" type="button">
+              <div>
+                <app-icon-rocket />
+              </div>
+          </button>
+        </section>
+      </div>
+    }@else {
+      <div class="flex items-center justify-center min-h-screen">
+          <div class="w-full p-3">
+              <div class="overflow-auto lg:overflow-visible grid grid-cols-4 gap-4 bordes-right-bottom">
+                  <div class="bg-gray-800 text-gray-500 border-separate space-y-6 text-sm bordes-left col-span-4 md:col-span-1 flex">
+                      <section class="w-full flex items-center justify-center">
+                          <div><h3 class="text-xl"> Calidad </h3></div>
+                      </section>
+                  </div>
+                  <section class="col-span flex justify-center flex-wrap col-span-4 md:col-span-3">
+                      <table class="table text-gray-400 space-y-6 text-sm w-full bordes-right-bottom" style="width: 100%;">
+                          <colgroup>
+                              <col style="width: 15%;">
+                              <col style="width: 15%;">
+                              <col style="width: 40%;">
+                              <col style="width: 30%;">
+                          </colgroup>
+                          <thead class="bg-gray-800 text-gray-500">
+                              <tr>
+                                  <th class="p-3" colspan="2">Actividad</th>
+                                  <th class="p-3 text-left">Especificaciones</th>
+                                  <th class="p-3 text-left  flex justify-center">Estatus</th>
+                              </tr>
+                          </thead> 
+                          <tbody class="bordes-right-bottom">
+                              <tr class="bg-gray-800">
+                                  <td class="p-3" colspan="2" rowspan="3">
+                                      <div class="flex align-items-center">
+                                          <div class="ml-3" >
+                                              <div class="">Pruebas Transaccionales exitosas</div>
+                                              <div class="text-gray-500"></div>
                                           </div>
-                                        } -->
+                                      </div>
+                                  </td>
+                                  <td class="p-3 font-bold">
+                                      Tarjeta de débito nacional TDD
+                                  </td>
+                                  <td class="p-3 flex gap-3 justify-end" >
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_0'>{{this.dataCert.tx_qa.nacional_TDD}}</span>
+                                      <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(0)">
+                                              <app-icon-edit />
+                                          </div>
+
+                                          @if (isOpen[0]) {
+                                            <div class="z-10 absolute right-0 top-7 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'tx_qa', 'nacional_TDD')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
                                       </button>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-800 bordes-right-bottom">
-                                <td class="p-3 font-bold">
-                                    Tarjeta de crédito internacional TDCI
-                                </td>
-                                <td class="p-3 flex gap-3 bordes-right-bottom justify-end">
-                                    <span class="bg-yellow-400 text-gray-50 rounded-md px-2 w-3/4 text-center">{{item.tx_qa.internacional_TDC}}</span>
-                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                        <app-icon-edit />
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                  </td>
+                              </tr>
+                              <tr class="bg-gray-800">
 
-                    <table class="table text-gray-400 space-y-6 mt-4 text-sm w-full bordes-right-bottom" style="width: 100%;">
-                        <colgroup>
-                            <col style="width: 15%;">
-                            <col style="width: 15%;">
-                            <col style="width: 40%;">
-                            <col style="width: 30%;">
-                        </colgroup>
-                        <tbody class="bordes-right-bottom">
-                            <tr class="bg-gray-800">
-                                <td class="p-3" colspan="2" rowspan="4">
-                                    <div class="flex align-items-center">
-                                        <div class="ml-3" >
-                                            <div class="">Revisión del Look and Feel</div>
-                                            <div class="text-gray-500"></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="p-3 font-bold">
-                                    Enmascaramiento de la data sensible
-                                </td>
-                                <td class="p-3 flex gap-3 justify-end" >
-                                    <span class="bg-yellow-400 text-gray-50 rounded-md px-2 w-3/4 text-center"> {{item.look_feel_qa.mask}}</span>
-                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                        <app-icon-edit />
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-800">
+                                  <td class="p-3 font-bold">
+                                      Tarjeta de crédito nacional TDC
+                                  </td>
+                                  <td class="p-3 flex gap-3 justify-end" >
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_1'>{{dataCert.tx_qa.nacional_TDC}}</span>
+                                        <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(1)">
+                                              <app-icon-edit />
+                                          </div>
 
-                                <td class="p-3 font-bold">
-                                    El formulario de pagos tiene todos los campos requeridos
-                                </td>
-                                <td class="p-3 flex gap-3 justify-end" >
-                                    <span class="bg-yellow-400 text-gray-50 rounded-md px-2 w-3/4 text-center">{{item.look_feel_qa.form_required}}</span>
-                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                        <app-icon-edit />
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-800 bordes-right-bottom">
-                                <td class="p-3 font-bold">
-                                Se indica que el pago fue procesado por CCR
-                                </td>
-                                <td class="p-3 flex gap-3 bordes-right-bottom justify-end" >
-                                    <span class="bg-yellow-400 text-gray-50 rounded-md px-2 w-3/4 text-center">{{item.look_feel_qa.pago_exitoso}}</span>
-                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                        <app-icon-edit />
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-800 bordes-right-bottom">
-                                <td class="p-3 font-bold">
-                                Logo de CCR
-                                </td>
-                                <td class="p-3 flex gap-3 bordes-right-bottom justify-end" >
-                                    <span class="bg-yellow-400 text-gray-50 rounded-md px-2 w-3/4 text-center">{{item.look_feel_qa.logo}}</span>
-                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                        <app-icon-edit />
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-            </div>
-            <div class="overflow-auto lg:overflow-visible flex gap-4 bordes-right-bottom pt-5">
-                <div class="bg-gray-800 text-gray-500 border-separate space-y-6 text-sm w-1/4 bordes-left flex">
-                    <section class="w-full flex items-center justify-center">
-                        <div><h3 class="text-xl"> Producción </h3></div>
-                    </section>
-                </div>
-                <section class="w-3/4 flex justify-center flex-wrap">
-                    <table class="table text-gray-400 space-y-6 text-sm w-full bordes-right-bottom" style="width: 100%;">
-                        <colgroup>
-                            <col style="width: 15%;">
-                            <col style="width: 15%;">
-                            <col style="width: 40%;">
-                            <col style="width: 30%;">
-                        </colgroup>
-                        <thead class="bg-gray-800 text-gray-500">
-                            <tr>
-                                <th class="p-3" colspan="2">Actividad</th>
-                                <th class="p-3 text-left">Especificaciones</th>
-                                <th class="p-3 text-left  bordes-right-top">Estatus</th>
-                            </tr>
-                        </thead> 
-                        <tbody class="bordes-right-bottom">
-                            <tr class="bg-gray-800">
-                                <td class="p-3" colspan="2" rowspan="2">
-                                    <div class="flex align-items-center">
-                                        <div class="ml-3" >
-                                            <div class="">Gestión de Credenciales</div>
-                                            <div class="text-gray-500"></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="p-3 font-bold">
-                                    Registro en el porta CCRpagos
-                                </td>
-                                <td class="p-3 flex gap-3 justify-end" >
-                                    <span class="bg-yellow-400 text-gray-50 rounded-md px-2 w-3/4 text-center">{{item.creden_prd.registro}}</span>
-                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                        <app-icon-edit />
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-800">
-                                <td class="p-3 font-bold">
-                                    Creación de las credenciales Client ID y Client secret
-                                </td>
-                                <td class="p-3 flex gap-3 justify-end" >
-                                    <span class="bg-yellow-400 text-gray-50 rounded-md px-2 w-3/4 text-center">{{item.creden_prd.creacion}}</span>
-                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                        <app-icon-edit />
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                          @if (isOpen[1]) {
+                                            <div class="z-10 absolute right-0 top-7 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'tx_qa', 'nacional_TDC')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
+                                        </button>
+                                  </td>
+                              </tr>
+                              <tr class="bg-gray-800 bordes-right-bottom">
+                                  <td class="p-3 font-bold">
+                                      Tarjeta de crédito internacional TDCI
+                                  </td>
+                                  <td class="p-3 flex gap-3 bordes-right-bottom justify-end">
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_2'>{{dataCert.tx_qa.internacional_TDC}}</span>
+                                      <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(2)">
+                                              <app-icon-edit />
+                                          </div>
 
-                    <table class="table text-gray-400 space-y-6 mt-4 text-sm w-full bordes-right-bottom" style="width: 100%;">
-                        <colgroup>
-                            <col style="width: 15%;">
-                            <col style="width: 15%;">
-                            <col style="width: 40%;">
-                            <col style="width: 30%;">
-                        </colgroup>
-                        <tbody class="bordes-right-bottom">
-                            <tr class="bg-gray-800">
-                                <td class="p-3" colspan="2" rowspan="3">
-                                    <div class="flex align-items-center">
-                                        <div class="ml-3" >
-                                            <div class="">Pruebas transaccionales exitosas</div>
-                                            <div class="text-gray-500"></div>
-                                        </div>
+                                          @if (isOpen[2]) {
+                                            <div class="z-10 absolute right-0 top-7 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'tx_qa', 'internacional_TDC')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
+                                      </button>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+
+                      <table class="table text-gray-400 space-y-6 mt-4 text-sm w-full bordes-right-bottom" style="width: 100%;">
+                          <colgroup>
+                              <col style="width: 15%;">
+                              <col style="width: 15%;">
+                              <col style="width: 40%;">
+                              <col style="width: 30%;">
+                          </colgroup>
+                          <tbody class="bordes-right-bottom">
+                              <tr class="bg-gray-800">
+                                  <td class="p-3" colspan="2" rowspan="4">
+                                      <div class="flex align-items-center">
+                                          <div class="ml-3" >
+                                              <div class="">Revisión del Look and Feel</div>
+                                              <div class="text-gray-500"></div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  <td class="p-3 font-bold">
+                                      Enmascaramiento de la data sensible
+                                  </td>
+                                  <td class="p-3 flex gap-3 justify-end" >
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_3'> {{dataCert.look_feel_qa.mask}}</span>
+                                      <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(3)">
+                                              <app-icon-edit />
+                                          </div>
+
+                                          @if (isOpen[3]) {
+                                            <div class="z-10 absolute right-0 top-7 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'look_feel_qa', 'mask')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
+                                      </button>
+                                  </td>
+                              </tr>
+                              <tr class="bg-gray-800">
+
+                                  <td class="p-3 font-bold">
+                                      El formulario de pagos tiene todos los campos requeridos
+                                  </td>
+                                  <td class="p-3 flex gap-3 justify-end" >
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_4'>{{dataCert.look_feel_qa.form_required}}</span>
+                                      <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(4)">
+                                              <app-icon-edit />
+                                          </div>
+
+                                          @if (isOpen[4]) {
+                                            <div class="z-10 absolute right-0 top-7 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'look_feel_qa', 'form_required')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
+                                      </button>
+                                  </td>
+                              </tr>
+                              <tr class="bg-gray-800 bordes-right-bottom">
+                                  <td class="p-3 font-bold">
+                                  Se indica que el pago fue procesado por CCR
+                                  </td>
+                                  <td class="p-3 flex gap-3 bordes-right-bottom justify-end" >
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_5'>{{dataCert.look_feel_qa.pago_exitoso}}</span>
+                                      <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(5)">
+                                              <app-icon-edit />
+                                          </div>
+
+                                          @if (isOpen[5]) {
+                                            <div class="z-10 absolute right-0 top-7 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'look_feel_qa', 'pago_exitoso')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
+                                      </button>
+                                  </td>
+                              </tr>
+                              <tr class="bg-gray-800 bordes-right-bottom">
+                                  <td class="p-3 font-bold">
+                                  Logo de CCR
+                                  </td>
+                                  <td class="p-3 flex gap-3 bordes-right-bottom justify-end" >
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_6'>{{dataCert.look_feel_qa.logo}}</span>
+                                      <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(6)">
+                                              <app-icon-edit />
+                                          </div>
+
+                                          @if (isOpen[6]) {
+                                            <div class="z-10 absolute right-0 top-7 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'look_feel_qa', 'logo')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
+                                      </button>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </section>
+              </div>
+              <div class="overflow-auto lg:overflow-visible grid grid-cols-4 gap-4 bordes-right-bottom pt-5">
+                  <div class="bg-gray-800 text-gray-500 border-separate space-y-6 text-sm col-span-4 md:col-span-1 bordes-left flex">
+                      <section class="w-full flex items-center justify-center">
+                          <div><h3 class="text-xl"> Producción </h3></div>
+                      </section>
+                  </div>
+                  <section class="col-span-4 md:col-span-3 flex justify-center flex-wrap">
+                      <table class="table text-gray-400 space-y-6 text-sm w-full bordes-right-bottom">
+                          <colgroup>
+                              <col style="width: 15%;">
+                              <col style="width: 15%;">
+                              <col style="width: 40%;">
+                              <col style="width: 30%;">
+                          </colgroup>
+                          <thead class="bg-gray-800 text-gray-500">
+                              <tr>
+                                  <th class="p-3" colspan="2">Actividad</th>
+                                  <th class="p-3 text-left">Especificaciones</th>
+                                  <th class="p-3 text-left  bordes-right-top">Estatus</th>
+                              </tr>
+                          </thead> 
+                          <tbody class="bordes-right-bottom">
+                              <tr class="bg-gray-800">
+                                  <td class="p-3" colspan="2" rowspan="2">
+                                      <div class="flex align-items-center">
+                                          <div class="ml-3" >
+                                              <div class="">Gestión de Credenciales</div>
+                                              <div class="text-gray-500"></div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  <td class="p-3 font-bold">
+                                      Registro en el porta CCRpagos
+                                  </td>
+                                  <td class="p-3 flex gap-3 justify-end" >
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_7'>{{dataCert.creden_prd.registro}}</span>
+                                      <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(7)">
+                                              <app-icon-edit />
+                                          </div>
+
+                                          @if (isOpen[7]) {
+                                            <div class="z-10 absolute right-0 top-7 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'creden_prd', 'registro')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
+                                      </button>
+                                  </td>
+                              </tr>
+                              <tr class="bg-gray-800">
+                                  <td class="p-3 font-bold">
+                                      Creación de las credenciales Client ID y Client secret
+                                  </td>
+                                  <td class="p-3 flex gap-3 justify-end" >
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_8'>{{dataCert.creden_prd.creacion}}</span>
+                                      <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(8)">
+                                              <app-icon-edit />
+                                          </div>
+
+                                          @if (isOpen[8]) {
+                                            <div class="z-10 absolute right-0 top-7 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'creden_prd', 'creacion')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
+                                      </button>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+
+                      <table class="table text-gray-400 space-y-6 mt-4 text-sm w-full bordes-right-bottom" style="width: 100%;">
+                          <colgroup>
+                              <col style="width: 15%;">
+                              <col style="width: 15%;">
+                              <col style="width: 40%;">
+                              <col style="width: 30%;">
+                          </colgroup>
+                          <tbody class="bordes-right-bottom">
+                              <tr class="bg-gray-800">
+                                  <td class="p-3" colspan="2" rowspan="3">
+                                      <div class="flex align-items-center">
+                                          <div class="ml-3" >
+                                              <div class="">Pruebas transaccionales exitosas</div>
+                                              <div class="text-gray-500"></div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  <td class="p-3 font-bold">
+                                      Tarjeta de débito nacional TDD
+                                  </td>
+                                  <td class="p-3 flex gap-3 justify-end" >
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_9'>{{dataCert.tx_prd.nacional_TDD}}</span>
+                                      <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(9)">
+                                              <app-icon-edit />
+                                          </div>
+
+                                          @if (isOpen[9]) {
+                                            <div class="z-10 absolute right-0 top-7 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'tx_prd', 'nacional_TDD')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
+                                      </button>
+                                  </td>
+                              </tr>
+                              <tr class="bg-gray-800">
+                                  <td class="p-3 font-bold">
+                                      Tarjeta crédito nacional TDC
+                                  </td>
+                                  <td class="p-3 flex gap-3 justify-end" >
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_10'>{{dataCert.tx_prd.nacional_TDC}}</span>
+                                      <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(10)">
+                                              <app-icon-edit />
+                                          </div>
+
+                                          @if (isOpen[10]) {
+                                            <div class="z-10 absolute right-0 bottom-9 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'tx_prd', 'nacional_TDC')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
+                                      </button>
+                                  </td>
+                              </tr>
+                              <tr class="bg-gray-800">
+                                  <td class="p-3 font-bold">
+                                      Tarjeta crédito internacional TDCI
+                                  </td>
+                                  <td class="p-3 flex gap-3 justify-end" >
+                                      <span class="rounded-md px-2 w-3/4 text-center" [ngClass]='item_11'>{{dataCert.tx_prd.internacional_TDC}}</span>
+                                      <button class="relative hover:text-gray-50" type="button" >
+                                          <div (click)="openMenu(11)">
+                                              <app-icon-edit />
+                                          </div>
+
+                                          @if (isOpen[11]) {
+                                            <div class="z-10 absolute right-0 bottom-9 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                              <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                              @for (option of options; track option) {
+                                                <li class="mb-1" (click)="selectOption(option, 'tx_prd', 'internacional_TDC')">
+                                                  <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                                    <app-icon-edit /> {{ option }}
+                                                  </button>
+                                                </li>
+                                              }
+                                              </ul>
+                                            </div>
+                                          }
+                                      </button>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </section>
+              </div>
+          </div>
+      </div>
+      <div class="flex items-center justify-center">
+        <div class="w-full p-3">
+          <!-- <div class="overflow-auto lg:overflow-visible flex gap-4 bordes-right-bottom"> -->
+            <div class="grid grid-cols-4 gap-4">
+              <div class="bg-gray-800 text-gray-400 border-separate space-y-6 text-sm col-span-4 md:col-span-1 bordes-left flex">
+                  <section class="w-full flex items-center justify-center">
+                      <div><h3 class="text-xl"> Actualizar todo </h3></div>
+                  </section>
+              </div>
+              <section class="col-span-4 md:col-span-3 flex justify-center flex-wrap borde">
+                <table class="table text-gray-400 space-y-6 text-sm border-right-bottom w-full">
+                  <!-- <colgroup>
+                      <col style="width: 15%;">
+                      <col style="width: 15%;">
+                      <col style="width: 40%;">
+                      <col style="width: 30%;">
+                  </colgroup> -->
+                  <tbody class="bordes-right-bottom">
+                      <tr class="bg-gray-800 hover:bg-red-500 hover:font-bold">
+                          <td class="p-3" colspan="2" >
+                              <div class="flex align-items-center">
+                                  <div class="ml-3" >
+                                      <div class="text-gray-400">Cambiar todos los status</div>
+                                      <div class="text-gray-400"></div>
+                                  </div>
+                              </div>
+                          </td>
+
+                          <td class="p-3 flex gap-3 justify-center" colspan="2" >
+                              <span class="bg-gray-400 text-gray-700 font-medium rounded-md px-2 w-3/4 text-center">status nuevo</span>
+                              <button class="relative text-gray-50 hover:text-gray-700" type="button">
+                                  <div (click)="openMenuTodo()" >
+                                      <app-icon-edit />
+                                  </div>
+
+                                  @if (isOpenTodo) {
+                                    <div class="z-10 absolute right-0 bottom-9 p-1 min-w-96 bg-black rounded-md border border-gray-500/50 shadow overflow-hidden custom-select">
+                                      <ul class="text-sm text-gray-200" aria-labelledby="dropdownDefaultButton"  >
+                                      @for (option of options; track option) {
+                                        <li class="mb-1" (click)="selectOption(option, 'todos', 'todos')">
+                                          <button class="w-full flex flex-row gap-x-2 items-center p-1 text-xs rounded-sm hover:bg-zinc-900">
+                                            <app-icon-edit /> {{ option }}
+                                          </button>
+                                        </li>
+                                      }
+                                      </ul>
                                     </div>
-                                </td>
-                                <td class="p-3 font-bold">
-                                    Tarjeta de débito nacional TDD
-                                </td>
-                                <td class="p-3 flex gap-3 justify-end" >
-                                    <span class="bg-green-400 text-gray-50 rounded-md px-2 w-3/4 text-center">{{item.tx_prd.nacional_TDD}}</span>
-                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                        <app-icon-edit />
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-800">
-                                <td class="p-3 font-bold">
-                                    Tarjeta crédito nacional TDC
-                                </td>
-                                <td class="p-3 flex gap-3 justify-end" >
-                                    <span class="bg-blue-400 text-gray-50 rounded-md px-2 w-3/4 text-center">{{item.tx_prd.nacional_TDC}}</span>
-                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                        <app-icon-edit />
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-800">
-                                <td class="p-3 font-bold">
-                                    Tarjeta crédito internacional TDCI
-                                </td>
-                                <td class="p-3 flex gap-3 justify-end" >
-                                    <span class="bg-red-600 text-gray-50 rounded-md px-2 w-3/4 text-center">{{item.tx_prd.internacional_TDC}}</span>
-                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                        <app-icon-edit />
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-            </div>
+                                  }
+                              </button>
+                          </td>
+                      </tr>
+                      <tr class="bg-gray-800">
+
+                      </tr>
+                  </tbody>
+                </table>
+              </section>
+          </div>
         </div>
-    </div>
-}
+      </div>
+  }

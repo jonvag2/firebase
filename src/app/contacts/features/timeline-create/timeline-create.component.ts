@@ -32,7 +32,7 @@ export interface TimelineForm {
             type="text"
             id="description"
             class="w-full p-3 rounded-md text-sm bg-transparent border-gray-500 border"
-            placeholder="Your description goes here"
+            placeholder="Escriba una  descripción"
             formControlName="description"
           ></textarea>
         </div>
@@ -43,7 +43,7 @@ export interface TimelineForm {
            (click)= "timelineContact()"
           >
             <app-icon-back />
-            Back to dashboard
+            Atrás
           </a>
 
           <button
@@ -51,7 +51,7 @@ export interface TimelineForm {
             type="submit"
           >
             <app-icon-rocket />
-              Create your activity
+              Crear una actividad
           </button>
         </div>
       </form>

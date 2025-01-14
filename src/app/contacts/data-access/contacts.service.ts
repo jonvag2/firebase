@@ -39,7 +39,6 @@ export class ContactsService {
       const snapshot = await getDoc(this.document(id));
       return snapshot.data() as Comercio;
     } catch (error) {
-      //catch error
       return undefined;
     }
   }

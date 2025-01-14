@@ -32,13 +32,20 @@ export class CertificationService {
 
   getCertification(id:string) {
     const q = query(this._collection, where('id_comercio', '==', id));
-    return collectionData(q, { idField: 'id' }) as Observable<
-      any
-    >;
+    return collectionData(q, { idField: 'id' }) as Observable<any>;
   }
 
   createCertification(certification: any) {
     
     return addDoc(this._collection, certification);
+  }
+
+  updateCertification(id_certificacion:string,  actualizar: any){
+
+    return updateDoc(this.document(id_certificacion), { ...actualizar });
+  }
+
+  private document(id: string) {
+    return doc(this._firestore, `${PATH}/${id}`);
   }
 }
